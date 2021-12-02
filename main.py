@@ -1,11 +1,9 @@
-
 import abuseipdb
 import crtsh
 import virustotal
 import time
 import socket
-from progress.bar import Bar
-
+import sys
 
 
 def main(domain):
@@ -53,4 +51,13 @@ if __name__ == '__main__':
         except Exception:
             return None
 
-    main("domain")
+
+    argumentList = sys.argv[1:]
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        print("missing arg")
+
+    exit()
+
+
