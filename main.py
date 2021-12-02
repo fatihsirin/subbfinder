@@ -53,6 +53,4 @@ if __name__ == '__main__':
         except Exception:
             return None
 
-    ips = get_ips_by_dns_lookup(target='aff3.gittigidiyor.com.')
-    print(str(ips))
-    main("gittigidiyor.com")
+    main("domain")
