@@ -7,6 +7,7 @@ from urllib3.connectionpool import SocketError, SSLError, MaxRetryError, ProxyEr
 
 def crtsh(dns):
     url = "https://crt.sh/?Identity={dns}".format(dns=dns)
+    regex_pattern = "<TD>(.*{dns})\<\/TD\>".format(dns=dns)
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
         'Referer': url,
@@ -24,7 +25,7 @@ def crtsh(dns):
 
     if status == 200:
         data = response.text
-        dns_ = list(set(re.findall('<TD>(.*hepsiburada.com)\<\/TD\>', data)))
+        dns_ = list(set(re.findall(regex_pattern, data)))
         _temp=[]
         for i in dns_:
             if "<BR>" in i:
